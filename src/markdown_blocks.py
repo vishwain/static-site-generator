@@ -1,14 +1,15 @@
 from enum import Enum
+
 from htmlnode import ParentNode
 from inline_markdown import text_to_textnodes
 from textnode import text_node_to_html_node, TextNode, TextType
 
 
 class BlockType(Enum):
-    PARAGRAPH = 'paragraph'
-    HEADING = 'heading'
-    CODE = 'code'
-    QUOTE = 'quote'
+    PARAGRAPH = "paragraph"
+    HEADING = "heading"
+    CODE = "code"
+    QUOTE = "quote"
     OLIST = "ordered_list"
     ULIST = "unordered_list"
 
@@ -147,16 +148,3 @@ def quote_to_html_node(block):
     content = " ".join(new_lines)
     children = text_to_children(content)
     return ParentNode("blockquote", children)
-
-
-if __name__ == "__main__":
-    md = """
-This is **bolded** paragraph
-
-This is another paragraph with _italic_ text and `code` here
-This is the same paragraph on a new line
-
-- This is a list
-- with items
-"""
-    print(markdown_to_blocks(md))
